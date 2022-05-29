@@ -3,16 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/compose-model-1653827108635.xml" value="0.2639358108108108" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/ic_baseline_bedtime_192.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.245" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.245" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.48007246376811596" />
+        <entry key="app/src/main/res/layout/fragment_killers.xml" value="0.2989583333333333" />
+        <entry key="app/src/main/res/layout/fragment_survivors.xml" value="0.2989583333333333" />
+        <entry key="app/src/main/res/layout/recycler_item.xml" value="0.2989583333333333" />
+        <entry key="app/src/main/res/layout/recycler_killers_item.xml" value="0.2989583333333333" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.5239583333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.302" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.302" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

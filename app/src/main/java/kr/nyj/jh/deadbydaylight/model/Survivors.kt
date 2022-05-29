@@ -41,7 +41,7 @@ class Survivors (
     val lang: String,
 
     @SerializedName("icon")
-    val icon: Objects,
+    val icon: Icon,
 
     @SerializedName("overview")
     val overview: String,
@@ -50,16 +50,6 @@ class Survivors (
     val perks: Array<String>,
 )
 
-class Icon(
-    @SerializedName("portrait")
-    val portrait: String,
-
-    @SerializedName("preview_portrait")
-    val preview_portrait: String,
-
-    @SerializedName("shop_background")
-    val shop_background: String,
-)
 //"_id": "5f46a992a3777022ec625f24",
 //"name": "Dwight Fairfield",
 //"full_name": null,

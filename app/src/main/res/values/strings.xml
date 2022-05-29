@@ -3,4 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+
+    <string name="title_survivors">Survivors</string>
+    <string name="title_killers">Killers</string>
+    <string name="title_perks">Perks</string>
+
 </resources>

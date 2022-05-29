@@ -1,10 +1,10 @@
-package kr.nyj.jh.deadbydaylight.ui.dashboard
+package kr.nyj.jh.deadbydaylight.ui.survivors
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class SurvivorsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"
