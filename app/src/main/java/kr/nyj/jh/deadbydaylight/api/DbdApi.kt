@@ -2,6 +2,7 @@ package kr.nyj.jh.deadbydaylight.api
 
 import io.reactivex.rxjava3.core.Observable
 import kr.nyj.jh.deadbydaylight.model.Killers
+import kr.nyj.jh.deadbydaylight.model.Perks
 import kr.nyj.jh.deadbydaylight.model.Survivors
 import retrofit2.http.GET
 
@@ -17,7 +18,7 @@ interface DbdApi {
     fun getCurrencies(): Observable<ArrayList<Survivors>>
 
     @GET("perks")
-    fun getPerks(): Observable<ArrayList<Survivors>>
+    fun getPerks(): Observable<ArrayList<Perks>>
 
     companion object {
         fun create(): DbdApi {

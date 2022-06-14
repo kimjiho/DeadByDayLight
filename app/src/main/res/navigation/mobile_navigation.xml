@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="kr.nyj.jh.deadbydaylight.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="kr.nyj.jh.deadbydaylight.ui.perks.PerksFragment"
+        android:label="@string/title_perks"
+        tools:layout="@layout/fragment_perks" />
 </navigation>

@@ -5,6 +5,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kr.nyj.jh.deadbydaylight.api.DbdApi
 import kr.nyj.jh.deadbydaylight.model.Killers
+import kr.nyj.jh.deadbydaylight.model.Perks
 import kr.nyj.jh.deadbydaylight.model.Survivors
 
 class DbdRepo {
@@ -18,6 +19,11 @@ class DbdRepo {
 
     fun getKillers(): Observable<ArrayList<Killers>> =
         api.getKillers()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
+    fun getPerks(): Observable<ArrayList<Perks>> =
+        api.getPerks()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 }

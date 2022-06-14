@@ -34,6 +34,8 @@ class KillersFragment : Fragment() {
             ViewModelProvider(this).get(KillersViewModel::class.java)
 
         _binding = FragmentKillersBinding.inflate(inflater, container, false)
+
+
         val root: View = binding.root
 
         val textView: TextView = binding.textHome
@@ -70,10 +72,12 @@ class KillersFragment : Fragment() {
                 }
 
                 override fun onError(e: Throwable) {
+                    binding.progressBar.visibility = View.GONE
                     e.printStackTrace()
                 }
 
                 override fun onComplete() {
+                    binding.progressBar.visibility = View.GONE
                     Log.w("DEBUG", "getKillers onComplete()")
                 }
             })

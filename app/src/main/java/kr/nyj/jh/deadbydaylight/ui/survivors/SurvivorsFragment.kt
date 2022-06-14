@@ -73,10 +73,12 @@ class SurvivorsFragment : Fragment() {
 
                 override fun onError(e: Throwable) {
                     e.printStackTrace()
+                    binding.progressBar.visibility = View.GONE
                 }
 
                 override fun onComplete() {
                     Log.w("DEBUG", "getSurvivors onComplete()")
+                    binding.progressBar.visibility = View.GONE
                 }
             })
     }
