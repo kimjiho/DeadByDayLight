@@ -5,12 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.rxjava3.observers.DisposableObserver
+import kr.nyj.jh.deadbydaylight.MainActivity
 import kr.nyj.jh.deadbydaylight.adapter.RecyclerPerksAdapter
 import kr.nyj.jh.deadbydaylight.databinding.FragmentPerksBinding
 import kr.nyj.jh.deadbydaylight.model.Perks
@@ -35,15 +34,10 @@ class PerksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val perksViewModel =
-            ViewModelProvider(this).get(PerksViewModel::class.java)
+            ViewModelProvider(this)[PerksViewModel::class.java]
 
         _binding = FragmentPerksBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textNotifications
-        perksViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
 
         binding.recyclerPerks.layoutManager = LinearLayoutManager(context)
         binding.recyclerPerks.adapter = recyclerAdapter
@@ -54,6 +48,8 @@ class PerksFragment : Fragment() {
     }
 
     private fun getPerks() {
+        (activity as MainActivity).doProgress(true)
+
         repo.getPerks()
             .subscribeWith(object: DisposableObserver<ArrayList<Perks>>() {
                 override fun onNext(t: ArrayList<Perks>) {
@@ -63,12 +59,16 @@ class PerksFragment : Fragment() {
 
                 override fun onError(e: Throwable) {
                     e.printStackTrace()
-                    binding.progressBar.visibility = View.GONE
+
+                    if(_binding != null)
+                        (activity as MainActivity).doProgress(false)
                 }
 
                 override fun onComplete() {
                     Log.w("DEBUG", "getPerks onComplete()")
-                    binding.progressBar.visibility = View.GONE
+
+                    if(_binding != null)
+                        (activity as MainActivity).doProgress(false)
                 }
             })
     }

@@ -5,11 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import io.reactivex.rxjava3.observers.DisposableObserver
+import kr.nyj.jh.deadbydaylight.MainActivity
 import kr.nyj.jh.deadbydaylight.adapter.RecyclerKillersAdapter
 import kr.nyj.jh.deadbydaylight.databinding.FragmentKillersBinding
 import kr.nyj.jh.deadbydaylight.model.Killers
@@ -31,17 +31,11 @@ class KillersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(KillersViewModel::class.java)
+            ViewModelProvider(this)[KillersViewModel::class.java]
 
         _binding = FragmentKillersBinding.inflate(inflater, container, false)
 
-
         val root: View = binding.root
-
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
 
         binding.recyclerKillers.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerKillers.adapter = recyclerAdapter
@@ -52,33 +46,30 @@ class KillersFragment : Fragment() {
     }
 
     private fun getKillers() {
+        (activity as MainActivity).doProgress(true)
+
         repo.getKillers()
             .subscribeWith(object: DisposableObserver<ArrayList<Killers>>() {
                 override fun onNext(t: ArrayList<Killers>) {
-                    var text = ""
-                    var index = 0
-                    for(i in t) {
-                        Log.w("DEBUG", "name: ${i.name}")
-
-                        text += i.name
-
+                    for((index, i) in t.withIndex()) {
+                        //Log.w("DEBUG", "name: ${i.name}")
                         list.add(i)
-
                         recyclerAdapter.notifyItemChanged(index)
-                        index++
                     }
-
-                    //binding.textHome.text = text
                 }
 
                 override fun onError(e: Throwable) {
-                    binding.progressBar.visibility = View.GONE
                     e.printStackTrace()
+
+                    if(_binding != null)
+                        (activity as MainActivity).doProgress(false)
                 }
 
                 override fun onComplete() {
-                    binding.progressBar.visibility = View.GONE
                     Log.w("DEBUG", "getKillers onComplete()")
+
+                    if(_binding != null)
+                        (activity as MainActivity).doProgress(false)
                 }
             })
     }

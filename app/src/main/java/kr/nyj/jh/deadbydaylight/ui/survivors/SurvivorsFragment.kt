@@ -5,11 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.rxjava3.observers.DisposableObserver
+import kr.nyj.jh.deadbydaylight.MainActivity
 import kr.nyj.jh.deadbydaylight.adapter.RecyclerCommonAdapter
 import kr.nyj.jh.deadbydaylight.databinding.FragmentSurvivorsBinding
 import kr.nyj.jh.deadbydaylight.model.Survivors
@@ -37,11 +37,6 @@ class SurvivorsFragment : Fragment() {
         _binding = FragmentSurvivorsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        survivorsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-
         binding.recyclerSurvivor.layoutManager = LinearLayoutManager(context)
         binding.recyclerSurvivor.adapter = recyclerAdapter
 
@@ -53,32 +48,30 @@ class SurvivorsFragment : Fragment() {
     }
 
     private fun getSurvivors() {
+        (activity as MainActivity).doProgress(true)
+
         repo.getSurvivors()
             .subscribeWith(object: DisposableObserver<ArrayList<Survivors>>() {
                 override fun onNext(t: ArrayList<Survivors>) {
-                    //var text = ""
-                    var index = 0
-                    for(i in t) {
-                        Log.w("DEBUG", "name: ${i.name}")
-                        //text += i.name
-
+                    for((index, i) in t.withIndex()) {
+                        //Log.w("DEBUG", "name: ${i.name}")
                         list.add(i)
-
                         recyclerAdapter.notifyItemChanged(index)
-                        index++
                     }
-
-                    //binding.textDashboard.text = text
                 }
 
                 override fun onError(e: Throwable) {
                     e.printStackTrace()
-                    binding.progressBar.visibility = View.GONE
+
+                    if(_binding != null)
+                        (activity as MainActivity).doProgress(false)
                 }
 
                 override fun onComplete() {
                     Log.w("DEBUG", "getSurvivors onComplete()")
-                    binding.progressBar.visibility = View.GONE
+
+                    if(_binding != null)
+                        (activity as MainActivity).doProgress(false)
                 }
             })
     }

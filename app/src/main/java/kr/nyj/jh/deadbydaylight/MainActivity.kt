@@ -3,6 +3,7 @@ package kr.nyj.jh.deadbydaylight
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -14,6 +15,8 @@ import kr.nyj.jh.deadbydaylight.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private var isInit: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,17 @@ class MainActivity : AppCompatActivity() {
         )
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        isInit = true
+    }
+
+    fun doProgress(isVisible: Boolean) {
+        if(!isInit) return
+
+        var visible = View.GONE
+        if(isVisible) visible = View.VISIBLE
+
+        binding.progressBar.visibility = visible
     }
 
 
