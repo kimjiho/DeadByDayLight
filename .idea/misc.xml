@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../layout/compose-model-1653827108635.xml" value="0.2639358108108108" />
+        <entry key="../../../../../../layout/compose-model-1655191771614.xml" value="0.5" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.245" />
         <entry key="app/src/main/res/drawable/ic_baseline_bedtime_192.xml" value="0.245" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.245" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1545" />
+        <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.178" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.48007246376811596" />
         <entry key="app/src/main/res/layout/fragment_killers.xml" value="0.2989583333333333" />
