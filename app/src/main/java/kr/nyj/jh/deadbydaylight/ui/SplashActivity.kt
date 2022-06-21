@@ -11,8 +11,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kr.nyj.jh.deadbydaylight.MainActivity
 import kr.nyj.jh.deadbydaylight.R
@@ -42,7 +43,14 @@ class SplashActivity : ComponentActivity() {
                 ) {
                     //Handler(Looper.myLooper()!!).sendEmptyMessageDelayed(0, 2000)
                     //Greeting("Android")
-                    splashScreen(this)
+                    //splashScreen(this)
+
+                    OnboardingScreen(onContinueClicked = {
+                        Intent(applicationContext, MainActivity::class.java).apply {
+                            startActivity(this)
+                            finish()
+                        }
+                    })
                 }
             }
         }
@@ -91,6 +99,26 @@ fun splashScreen(activity: Activity) {
         style = MaterialTheme.typography.h2,
         modifier = Modifier.scale(scale.value)
     )
+}
+
+@Composable
+fun OnboardingScreen(onContinueClicked: () -> Unit) {
+
+    Surface {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text("Welcome to the Dead by Daylight")
+            Button(
+                modifier = Modifier.padding(vertical = 24.dp),
+                onClick = onContinueClicked
+            ) {
+                Text("Continue")
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)
