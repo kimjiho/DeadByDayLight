@@ -1,7 +1,6 @@
 package kr.nyj.jh.deadbydaylight.model
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 class Survivors (
     @SerializedName("_id")
@@ -47,7 +46,7 @@ class Survivors (
     val overview: String,
 
     @SerializedName("perks")
-    val perks: Array<String>,
+    val perks: Array<String>
 )
 
 //"_id": "5f46a992a3777022ec625f24",

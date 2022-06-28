@@ -1,7 +1,6 @@
 package kr.nyj.jh.deadbydaylight.model
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 class Killers(
     @SerializedName("_id")
