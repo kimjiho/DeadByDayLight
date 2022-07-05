@@ -1,17 +1,16 @@
 package kr.nyj.jh.deadbydaylight.ui
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -23,12 +22,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kr.nyj.jh.deadbydaylight.MainActivity
-import kr.nyj.jh.deadbydaylight.R
 import kr.nyj.jh.deadbydaylight.ui.ui.theme.DeadByDayLightTheme
 
 class SplashActivity : ComponentActivity() {
@@ -58,7 +55,7 @@ class SplashActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
+private fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
@@ -123,7 +120,7 @@ fun OnboardingScreen(onContinueClicked: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+private fun DefaultPreview() {
     DeadByDayLightTheme {
         //Greeting("Android")
     }
