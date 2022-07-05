@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kr.nyj.jh.deadbydaylight.R
 import kr.nyj.jh.deadbydaylight.model.Killers
-import kr.nyj.jh.deadbydaylight.model.Survivors
 
 class RecyclerKillersAdapter(private val list: ArrayList<Killers>) : RecyclerView.Adapter<RecyclerKillersAdapter.RecycleViewHolder>() {
 
